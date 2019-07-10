@@ -1,0 +1,47 @@
+<table class="table table-hover grid-view">
+    <thead>
+        <tr>
+                <th width="25%">
+                    &nbsp;
+                    <button (click)="return()">返回</button>
+                </th>
+                <th>
+                    &nbsp;
+                    #{{fileService.filePath}}
+                </th>
+                <th width="25%">
+                    <a class="button" (click)="delete()">删除文件</a>
+                    |
+                    <a class="button" (click)="download()">下载文件</a>
+                    
+                    <span *ngIf="isReadonly && !isBinary">|<a class="button" (click)="edit(true)">编辑文件</a></span>
+                    <span *ngIf="!isReadonly && !isBinary">|<a class="button" (click)="edit(false)">查看文件</a></span>
+                    
+
+                </th>
+        </tr>
+     
+    </thead>
+    <tbody>
+       <tr>
+           <td colspan="3">
+               <form [formGroup]="checkoutForm">
+                    <textarea class="form-control"
+                    [readonly]="isReadonly"
+                    formControlName="content"
+                    style="min-height: 85vh;"> 
+                    
+                    </textarea>
+               </form>
+               
+
+           </td>
+       </tr>
+       <tr>
+           <td colspan="3">
+                <button *ngIf="!isReadonly" (click)="submit()">提交</button>
+           </td>
+       </tr>
+    </tbody>
+    
+</table>

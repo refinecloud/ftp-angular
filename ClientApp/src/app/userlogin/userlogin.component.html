@@ -1,0 +1,11 @@
+<form id="loginFormInfo" [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+  <!-- 用户名 -->
+  <div id="uname_text" class="form-group">
+    <input type="text" placeholder="输入账号" formControlName="username" required></div>
+  <!-- 密码 -->
+  <div id="pwd_text" class="form-group">
+    <input type="password" placeholder="输入密码" formControlName="password" required></div>
+  <!-- 提交按钮 -->
+  <div id="submit_bg">
+    <button id="submit_btn" type="submit" class="btn btn-secondary btn-lg">立即登录</button></div>
+</form>

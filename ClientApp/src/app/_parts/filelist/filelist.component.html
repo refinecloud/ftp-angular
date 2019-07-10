@@ -1,0 +1,43 @@
+<table class="table table-hover grid-view">
+    <thead>
+        <tr>
+                <th width="25%">
+                    &nbsp;
+                    <button *ngIf="!fileService.isRoot" (click)="return()">返回</button>
+                </th>
+                <th>
+                    &nbsp;
+                    /{{fileService.directoryPath}}
+                </th>
+                <th width="25%">
+                    <a class="button" routerLink="/upload">上传文件</a>
+                    <a class="button" (click)="createdirectory()">创建目录</a>
+                </th>
+        </tr>
+        <tr>
+            <th>名称</th>
+           <!--<th>类型</th>-->
+            <th>大小</th>
+            <th>更新日期</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of fileInfoList">
+            <td>
+                <span
+                    [ngClass]="{'glyphicon':true , 'glyphicon-folder-close': item.type=='directory', 'glyphicon-file': item.type=='file'}">
+                </span>
+
+                <a (click)="select(item)" class="item-text" style="margin-left: 5px;">{{item.name}}</a></td>    
+                
+            <!--
+            <td><span class="item-text">{{item.type}}</span></td>
+                -->
+            <td>
+                <span class="item-text">{{item.length}}</span></td>
+            <td>
+                <span class="item-text">{{item.lastModified}}</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
